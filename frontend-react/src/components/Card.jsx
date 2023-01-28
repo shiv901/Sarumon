@@ -1,6 +1,6 @@
 
 export default function Card({ mon, isDark }) {
-  console.log(mon?.number, mon?.owned)
+  // console.log(mon?.number, mon?.owned)
   return (
     <>
       {mon && <div className={`card-num ${isDark ? 'dark' : ''} ${mon.owned ? 'owned' : ''}`}>

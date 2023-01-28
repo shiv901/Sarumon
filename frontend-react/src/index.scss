@@ -135,12 +135,19 @@ label {
   transform: translateY(-50%);
 }
 
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
 .card-num {
   --size: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: var(--size);
+  // width: var(--size);
   height: var(--size);
   background-color: #4d566b;
   color: #fff;
@@ -148,42 +155,56 @@ label {
   font-size: calc(var(--size)/4);
   position: relative;
   overflow: hidden;
+  transition: all 0.5s ease-in;
+
+  &.dark {
+    background-color: #141c2f;
+  }
+
+  .d-num {
+    z-index: 2;
+  }
+
+  img {
+    position: absolute;
+    filter: blur(9px);
+    opacity: 0.8;
+  }
+
+  &.owned {
+    .d-num {
+      position: absolute;
+      left: -1px;
+      top: -2px;
+      font-size: 16px;
+      background: #0003;
+      padding: 0 5px;
+      border-radius: 5px;
+    }
+
+    img {
+      position: absolute;
+      filter: none;
+      opacity: 1;
+    }
+  }
 }
 
-.card-num .d-num {
-  z-index: 2;
-}
+.filterDD {
+  margin-left: 1rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  background: #cccccc;
+  color: #141c2f;
+  border: 1px solid gray;
+  transition: all 1s ease;
 
-.card-num img {
-  position: absolute;
-}
+  &.dark {
+    background: #141c2f;
+    color: #fff;
+  }
 
-.card-num.owned img {
-  position: absolute;
-  filter: none;
-  opacity: 1;
-}
-
-.card-num.owned .d-num {
-  position: absolute;
-  left: -1px;
-  top: -2px;
-  font-size: 16px;
-  background: #0003;
-  padding: 0 5px;
-  border-radius: 5px;
-}
-
-.card-num img {
-  filter: blur(9px);
-  opacity: 0.8;
-}
-
-.card-num.dark {
-  background-color: #141c2f;
-}
-
-.cards-container div.card-num:last-child {
-  margin-right: auto;
-  margin-left: 0.3rem;
+  &:hover {
+    filter: brightness(2);
+  }
 }
