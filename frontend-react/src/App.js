@@ -7,7 +7,7 @@ import { SERVER_URL } from './components/constants';
 function App() {
   const [isDark, setTheme] = useState(true)
   const [data, setData] = useState([]);
-  const [fechedData, setFetchedData] = useState([]);
+  // const [fechedData, setFetchedData] = useState([]);
   const [count, setCount] = useState(0);
   const [search, setSearch] = useState('');
 
