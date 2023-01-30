@@ -1,0 +1,89 @@
+[
+  {
+    "number": "021"
+  },
+  {
+    "symbol": "NOKIAMON",
+    "number": "022",
+    "owned": false,
+    "owned_no.s": 0,
+    "nfts": [
+      {
+        "mint": "C9TpdiTrutBA9QYEic2z6NHac63ZEcaMYcBoMogp6kHc",
+        "owned": false,
+        "metadata": {
+          "name": "Uta",
+          "description": "Half water and half lightning nokiamon, they are sometimes described as having the body of a fish but with two leg. There is also myth about Uta that are often associated with storm, chaos and destruction, they are often depicted as enemies of humans. Water canon and petromax are the most powerful abilities that Uta has since in the baby stage.",
+          "image": "https://shdw-drive.genesysgo.net/CbWGfYfTJvBfBXCsQPj3Hvvxvfgm3bVkxMSBHJGgdQp1/022.gif",
+          "symbol": "NOKIAMON",
+          "attributes": [
+            {
+              "trait_type": "Number",
+              "value": "022"
+            },
+            {
+              "trait_type": "Name",
+              "value": "Uta"
+            },
+            {
+              "trait_type": "Type 1",
+              "value": "Water"
+            },
+            {
+              "trait_type": "Type 2",
+              "value": "Electric"
+            },
+            {
+              "trait_type": "Origins",
+              "value": "Flagz"
+            },
+            {
+              "trait_type": "Generation",
+              "value": "1"
+            },
+            {
+              "trait_type": "Classification",
+              "value": "Axolotl"
+            },
+            {
+              "trait_type": "Height",
+              "value": "80"
+            },
+            {
+              "trait_type": "Weight",
+              "value": "40"
+            },
+            {
+              "trait_type": "Female Ratio",
+              "value": "50"
+            },
+            {
+              "trait_type": "Male Ratio",
+              "value": "50"
+            },
+            {
+              "trait_type": "Main Abilities 1",
+              "value": "Petromax"
+            },
+            {
+              "trait_type": "Main Abilities 2",
+              "value": "Water Canon"
+            },
+            {
+              "trait_type": "Evolve",
+              "value": "No"
+            },
+            {
+              "trait_type": "First Appearance",
+              "value": "06 Dec 2022"
+            },
+            {
+              "trait_type": "Legendary",
+              "value": "No"
+            }
+          ]
+        }
+      }
+    ],
+  }
+]

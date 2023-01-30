@@ -137,8 +137,8 @@ label {
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3rem 2rem;
   transition: all 0.3s ease-in-out;
 }
 
@@ -147,7 +147,7 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  // width: var(--size);
+  width: var(--size);
   height: var(--size);
   background-color: #4d566b;
   color: #fff;

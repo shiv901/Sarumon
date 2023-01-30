@@ -7,15 +7,17 @@ import { SERVER_URL } from './components/constants';
 function App() {
   const [isDark, setTheme] = useState(true)
   const [data, setData] = useState([]);
+  const [fechedData, setFetchedData] = useState([]);
   const [count, setCount] = useState(0);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetch(SERVER_URL + 'dex')
+    fetch(SERVER_URL)
       .then(res => {
         if (res.ok) {
           return res.json()
         }
+        return Promise.reject(res);
       })
       .then(data => {
         setCount(data.length + 1)
@@ -24,29 +26,20 @@ function App() {
           data = data.filter(mon => {
             if ((/^\d*$/).test(search)) {
               return +search === +mon.number
-            } else {
-              const name = mon.nfts.metadata.name
+            } else if (mon.nfts !== undefined) {
+              const name = mon.nfts[0].metadata.name
               if (!name) return null
               let regEx = new RegExp(search, 'ig')
               return regEx.test(name)
-            }
+            } else return null
           })
         }
         setData(data)
       })
+      .catch((error) => {
+        console.log('Something went wrong.', error);
+      });
   }, [search]);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     let result = data.filter(mon => {
-  //       let name = mon.nfts.metadata.name
-  //       let regEx = new RegExp(search, 'ig')
-  //       return regEx.test(name)
-  //     })
-  //     setData(result)
-  //   }
-
-  // }, [search]);
 
   return (
     <div className={`App ${isDark ? 'dark' : 'light'}`}>

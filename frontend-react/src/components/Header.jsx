@@ -8,7 +8,7 @@ const Header = ({ isDark, count, search, setSearch }) => {
 
   return (
     <div className="header my-4 d-flex align-items-end justify-content-between">
-      <p className="dexNums">Showing <em className="text-decoration-underline">{count}</em> of <em>{count}</em> dexs</p>
+      <p className="dexNums">Showing <em className="fw-bold">{count}</em> of <em>{count}</em> entries</p>
       <div className="filters d-flex align-items-end">
         <div className="input-group searchBox">
           <input type="text" className={`form-control ${isDark ? 'bg-dark text-white' : ''}`} placeholder="Type Name or Number..." value={search} onChange={e => setSearch(e.target.value)} />
