@@ -1,32 +1,20 @@
 const { MongoClient } = require("mongodb");
+const mongoClient = new MongoClient(process.env.MONGODB_URI);
+const clientPromise = mongoClient.connect();
 
-let cachedDb = null;
+const handler = async (event) => {
+  try {
+    const database = (await clientPromise).db(process.env.MONGODB_DATABASE);
+    const collection = database.collection(process.env.MONGODB_COLLECTION);
+    console.log(process.env.MONGODB_COLLECTION)
+    const results = await collection.find({}).toArray();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(results),
+    }
+  } catch (error) {
+    return { statusCode: 500, body: error.toString() }
+  }
+}
 
-const connectToDatabase = async (uri) => {
-  if (cachedDb) return cachedDb;
-
-  const client = await MongoClient.connect(uri, {
-    useUnifiedTopology: true,
-  });
-
-  cachedDb = client.db(process.env.MONGODB_DATABASE);
-  return cachedDb;
-};
-
-const queryDatabase = async (db) => {
-  const pokemon = await db.collection(process.env.MONGODB_COLLECTION).find({}).toArray();
-
-  return {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(pokemon),
-  };
-};
-
-module.exports.handler = async (event, context) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-  const db = await connectToDatabase(process.env.MONGODB_URI);
-  return queryDatabase(db);
-};
+module.exports = { handler }

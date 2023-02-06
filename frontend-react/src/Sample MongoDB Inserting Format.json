@@ -1,12 +1,9 @@
 [
   {
-    "number": "021"
-  },
-  {
     "symbol": "NOKIAMON",
     "number": "022",
     "owned": false,
-    "owned_no.s": 0,
+    "owned_nos": 0,
     "nfts": [
       {
         "mint": "C9TpdiTrutBA9QYEic2z6NHac63ZEcaMYcBoMogp6kHc",
@@ -84,6 +81,6 @@
           ]
         }
       }
-    ],
+    ]
   }
 ]
