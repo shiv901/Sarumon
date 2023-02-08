@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 import FilterModal from './FilterModal';
+import ThemeContext from '../context/ThemeContext';
 
 const Header = ({ props }) => {
-  const { isDark, count, totalCount, search, setSearch, showOwned, setShowOwned, filters, setFilters } = props
-
+  const { count, totalCount, search, setSearch, showOwned, setShowOwned, filters, setFilters } = props
+  const { isDark } = useContext(ThemeContext)
   const [showFilter, setShowFilter] = useState(false)
 
   function handleFilterClick(e) {
@@ -12,7 +13,7 @@ const Header = ({ props }) => {
   }
 
   return (
-    <div className="header my-4 d-flex flex-column-reverse flex-md-row gap-2 align-items-end justify-content-between">
+    <div className="header my-4 d-flex flex-column-reverse flex-md-row gap-2 align-items-md-end justify-content-between">
       <p className="dexNums">Showing <em className="fw-bold">{count}</em> of <em>{totalCount}</em> entries</p>
       <div className="filters d-flex flex-wrap flex-md-nowrap align-items-center gap-3 ">
         <div className="input-group searchBox">
@@ -20,7 +21,7 @@ const Header = ({ props }) => {
         </div>
         <div className="btn-group">
           <input type="checkbox" className="btn-check" id="showOwned" defaultChecked={showOwned} onClick={() => setShowOwned((prev) => !prev)} />
-          <label className="btn btn-outline-secondary shadow-none" htmlFor="showOwned">Show Only Owned</label>
+          <label className="btn btn-outline-secondary shadow-none" htmlFor="showOwned">Owned</label>
         </div>
         <div className={`filterDD ${isDark ? 'dark' : ''}`} onClick={handleFilterClick}>
           <FaFilter />

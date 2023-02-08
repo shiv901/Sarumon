@@ -1,6 +1,3 @@
-import { useState } from "react";
-import DetailedPanel from "./DetailedPanel";
-
 export default function Card({ mon, isDark, handleClick }) {
 
 

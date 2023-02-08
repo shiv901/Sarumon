@@ -38,22 +38,30 @@ code {
 }
 
 /* * Utilities */
-.App {
+.Main {
   transition: all 0.5s ease-in;
   min-height: 100vh;
+  position: relative;
+
+  &.dark {
+    background-color: #1e293b;
+    color: #fff;
+  }
+
+  &.light {
+    background-color: #b6b6b6;
+  }
 }
 
-.App.dark {
-  background-color: #1e293b;
-  color: #fff;
-}
-
-.App.light {
-  background-color: #b6b6b6;
+#error-page {
+  display: grid;
+  place-content: center;
+  // min-height: 30vh;
+  margin: 3rem;
 }
 
 .container {
-  padding-inline: 3rem;
+  padding-inline: 1rem;
 
   @media screen and (max-width:576px) {
     padding-inline: 1rem;
@@ -82,23 +90,72 @@ label {
   font-size: larger;
 }
 
+.active {
+  font-weight: 700;
+}
+
 /* * Navbar */
 .navbar {
   transition: all 1s ease;
   border-bottom: 5px solid;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  transition: all 0.3s;
+
+
+  .logo {
+    flex: 50%;
+  }
+
+  .switch {
+    font-size: 2rem;
+
+    label {
+      cursor: pointer;
+      border: 2px solid;
+      padding: 0.5rem;
+      border-radius: 50%;
+      display: flex;
+      transition: all 0.5s;
+    }
+
+  }
+
+  .nav-sides {
+    align-items: center;
+    flex: 20%;
+    justify-content: space-between;
+  }
+
+  .nav-items {
+    padding-left: 0;
+
+    .nav-link a {
+      font-size: large;
+      letter-spacing: 2px;
+    }
+  }
 }
+
 
 .navbar-dark {
   background-color: #141c2f;
   color: #fffb;
   box-shadow: 0px 5px 9px 1px #ffffff4f;
 
+  .nav-link a {
+    color: #ccc;
+  }
 }
 
 .navbar-light {
   background-color: #d8d8d8;
   box-shadow: 0px 5px 9px 1px #0000004f;
 
+  .nav-link a {
+    color: #333;
+  }
 }
 
 .navbar h1 {
@@ -108,6 +165,10 @@ label {
 .form-check-input:checked {
   background-color: #282828;
   border-color: #ffffff;
+}
+
+.form-switch {
+  padding-left: 0;
 }
 
 .form-switch .form-check-input {
@@ -164,7 +225,7 @@ label {
   border-radius: 5px;
   font-size: calc(var(--size)/4);
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
   transition: all 0.5s;
   cursor: pointer;
   transform: scale(1);
@@ -207,18 +268,19 @@ label {
     .d-num,
     .o-num {
       position: absolute;
-      left: -1px;
-      top: -2px;
+      left: -2px;
+      top: -3px;
       font-size: 16px;
-      background: #0003;
+      background: rgb(0 0 0);
       padding: 0 5px;
       border-radius: 5px 0;
     }
 
     .o-num {
       left: unset;
-      right: -1px;
-      border-radius: 0 5px;
+      right: -3px;
+      top: unset;
+      bottom: -3px;
     }
 
     img {
@@ -288,7 +350,7 @@ label {
 }
 
 #detailedModal {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-color: rgba(31, 37, 69, .30);
   backdrop-filter: blur(10px);
@@ -336,14 +398,14 @@ label {
 
       .modal-container {
         flex-direction: column;
-        min-height: 80vh;
+        min-height: 90vh;
 
         img {
           flex: unset;
         }
 
         .blank {
-          flex: 77%;
+          flex: 50%;
         }
       }
     }

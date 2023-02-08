@@ -1,15 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Card from "./Card";
 import DetailedPanel from "./DetailedPanel";
+import ThemeContext from "../context/ThemeContext";
 
-const Dex = ({ isDark, data, count, totalCount }) => {
+const Dex = ({ data, count, totalCount }) => {
+	const { isDark } = useContext(ThemeContext)
 	const [open, setOpen] = useState(false)
 	const [selectedMon, setSelectedMon] = useState({});
-
-
-	// function selectPrev(num) {
-	// 	setSelectedMon(data[num])
-	// }
 
 	function navigate(num) {
 		if (count === totalCount) {
@@ -23,15 +20,17 @@ const Dex = ({ isDark, data, count, totalCount }) => {
 			setSelectedMon(mon)
 		}
 	}
-	console.log(data)
+
 	return (
-		<div className="cards-container">
-			{data.map((mon, i) => <Card key={i} mon={mon} isDark={isDark} handleClick={handleClick} />)}
+		<>
+			<div className="cards-container">
+				{data.map((mon, i) => <Card key={i} mon={mon} isDark={isDark} handleClick={handleClick} />)}
+			</div>
+
 			{open ? <DetailedPanel props={
 				{ mon: selectedMon, totalCount, navigate, isDark, setOpen, }
 			} /> : ''}
-
-		</div>
+		</>
 	);
 }
 

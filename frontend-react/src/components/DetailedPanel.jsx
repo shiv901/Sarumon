@@ -14,7 +14,7 @@ export default function DetailedPanel({ props }) {
   function closeModal() {
     setOpen(false)
   }
-  console.log(+mon.number + 1, totalCount)
+
   return (
     <div id="detailedModal" onClick={closeModal}>
       <div className={`modal ${isDark ? '' : 'light'}`} onClick={e => e.stopPropagation()}>
@@ -102,7 +102,7 @@ export default function DetailedPanel({ props }) {
 
                 <h5 className="mt-5">Stats</h5>
                 {stats && stats.map(stat => (
-                  <div className="stats d-flex align-items-center gap-3">
+                  <div key={stat.name} className="stats d-flex align-items-center gap-3">
                     <div className="attr">
                       {stat.name}: <span>{stat.value}</span>
                     </div>
@@ -116,8 +116,8 @@ export default function DetailedPanel({ props }) {
                   {<ProgressBar progress={stats.map(x => x.value).reduce((a, b) => a + b) / 300 * 100} />}
                 </div>
 
-                <h5 className="mt-5">Raw Metadata</h5>
-                <div className="detail-box-container">
+                <h5 className="mt-5 d-none">Raw Metadata</h5>
+                <div className="detail-box-container d-none">
                   <textarea className="raw-detail" disabled value={JSON.stringify(mon)}></textarea>
                 </div>
 
@@ -146,6 +146,6 @@ export default function DetailedPanel({ props }) {
           </div>
         )}
       </div>
-    </div>
+    </div >
   )
 }
