@@ -94,6 +94,11 @@ label {
   font-weight: 700;
 }
 
+.big-btn {
+  width: max-content;
+  padding-inline: 3rem;
+}
+
 /* * Navbar */
 .navbar {
   transition: all 1s ease;

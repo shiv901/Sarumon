@@ -23,7 +23,7 @@ const Dex = ({ data, count, totalCount }) => {
 
 	return (
 		<>
-			<div className="cards-container">
+			<div className="cards-container pb-5">
 				{data.map((mon, i) => <Card key={i} mon={mon} isDark={isDark} handleClick={handleClick} />)}
 			</div>
 

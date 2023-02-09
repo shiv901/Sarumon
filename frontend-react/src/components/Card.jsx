@@ -1,6 +1,5 @@
 export default function Card({ mon, isDark, handleClick }) {
 
-
   return (
     <>
       {mon &&
